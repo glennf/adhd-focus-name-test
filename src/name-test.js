@@ -73,6 +73,11 @@ export function getRandomVariantId(random = Math.random) {
   return testVariantIds[Math.max(0, Math.min(index, testVariantIds.length - 1))];
 }
 
+export function getPublicVariantId(rawVariant, random = Math.random) {
+  const normalized = normalizeVariant(rawVariant);
+  return testVariantIds.includes(normalized) ? normalized : getRandomVariantId(random);
+}
+
 export function normalizeVariant(rawVariant) {
   return String(rawVariant || '')
     .trim()

@@ -1,17 +1,18 @@
-import { buildResponsePayload, getRandomVariantId, getVariantConfig } from './src/name-test.js';
+import { buildResponsePayload, getPublicVariantId, getVariantConfig } from './src/name-test.js';
 
 const form = document.querySelector('#name-test-form');
 const status = document.querySelector('#form-status');
 const submitButton = form?.querySelector('button[type="submit"]');
 const params = new URLSearchParams(window.location.search);
+const variantId = getPublicVariantId(params.get('variant'));
 
-if (!params.get('variant')) {
-  params.set('variant', getRandomVariantId());
+if (params.get('variant') !== variantId) {
+  params.set('variant', variantId);
   const randomizedUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
   window.location.replace(randomizedUrl);
 }
 
-const variantConfig = getVariantConfig(params.get('variant'));
+const variantConfig = getVariantConfig(variantId);
 
 function applyVariant(config) {
   document.title = `${config.name} — Voice-first fokusapp`;

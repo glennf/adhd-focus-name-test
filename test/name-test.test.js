@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   buildResponsePayload,
+  getPublicVariantId,
   getRandomVariantId,
   getVariantConfig,
   scoreLabels,
@@ -42,6 +43,14 @@ test('public test variants exclude default and can be deterministically randomiz
   assert.deepEqual(testVariantIds, ['hodero', 'tankerydd', 'hodefred', 'fokusflyt', 'klaresinn']);
   assert.equal(getRandomVariantId(() => 0), 'hodero');
   assert.equal(getRandomVariantId(() => 0.999), 'klaresinn');
+});
+
+test('getPublicVariantId only allows planned test variants', () => {
+  assert.equal(getPublicVariantId('tankerydd', () => 0), 'tankerydd');
+  assert.equal(getPublicVariantId('Tankerydd', () => 0.2), 'tankerydd');
+  assert.equal(getPublicVariantId('hva-som-helst', () => 0.999), 'klaresinn');
+  assert.equal(getPublicVariantId('default', () => 0), 'hodero');
+  assert.equal(getPublicVariantId('', () => 0.4), 'hodefred');
 });
 
 test('scoreLabels provides a five-point Likert scale', () => {
