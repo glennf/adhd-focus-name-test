@@ -1,13 +1,31 @@
+import { buildResponsePayload, getVariantConfig } from './src/name-test.js';
+
 const form = document.querySelector('#name-test-form');
 const status = document.querySelector('#form-status');
 const submitButton = form?.querySelector('button[type="submit"]');
-const nameCards = document.querySelectorAll('.name-card');
-const select = form?.querySelector('select[name="favorite"]');
 const params = new URLSearchParams(window.location.search);
+const variantConfig = getVariantConfig(params.get('variant'));
+
+function applyVariant(config) {
+  document.title = `${config.name} — Voice-first fokusapp`;
+  document.querySelectorAll('[data-variant-field]').forEach((element) => {
+    const field = element.dataset.variantField;
+    if (field && config[field]) element.textContent = config[field];
+  });
+  document.querySelectorAll('[data-variant-input="favorite"]').forEach((element) => {
+    element.value = config.name;
+  });
+  document.querySelectorAll('.name-card').forEach((card) => {
+    const url = new URL(card.href, window.location.href);
+    const cardVariant = getVariantConfig(url.searchParams.get('variant'));
+    if (cardVariant.id === config.id) card.setAttribute('aria-current', 'true');
+  });
+}
 
 function getMetadata() {
   return {
-    variant: params.get('variant') || '',
+    variant: variantConfig.id,
+    variantName: variantConfig.name,
     pageUrl: window.location.href,
     referrer: document.referrer,
     userAgent: navigator.userAgent,
@@ -27,16 +45,12 @@ function saveLocalBackup(data) {
   return responses.length;
 }
 
-nameCards.forEach((card) => {
-  card.addEventListener('click', () => {
-    if (select) select.value = card.dataset.name;
-    document.querySelector('#test')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
+applyVariant(variantConfig);
 
 form?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const data = { ...Object.fromEntries(new FormData(form).entries()), ...getMetadata() };
+  const formData = Object.fromEntries(new FormData(form).entries());
+  const data = buildResponsePayload(formData, getMetadata());
   const localCount = saveLocalBackup(data);
 
   if (status) status.textContent = 'Lagrer svar …';
@@ -53,8 +67,9 @@ form?.addEventListener('submit', async (event) => {
 
     if (status) status.textContent = 'Takk! Svaret er lagret.';
     form.reset();
+    applyVariant(variantConfig);
   } catch (error) {
-    console.error('Kunne ikke lagre til Google Sheets', error);
+    console.error('Kunne ikke sende inn svar', error);
     if (status) {
       status.textContent = `Svaret ble lagret lokalt i nettleseren, men ikke sendt inn. Prøv igjen senere. Lokale svar her: ${localCount}`;
     }

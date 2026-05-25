@@ -1,5 +1,5 @@
 const SHEET_ID = process.env.GOOGLE_SHEET_ID;
-const SHEET_RANGE = process.env.GOOGLE_SHEET_RANGE || 'Responses!A:N';
+const SHEET_RANGE = process.env.GOOGLE_SHEET_RANGE || 'Responses!A:R';
 const TOKEN_URI = process.env.GOOGLE_TOKEN_URI || 'https://oauth2.googleapis.com/token';
 
 const allowedOrigins = new Set([
@@ -65,10 +65,15 @@ async function appendToSheet(payload) {
   const accessToken = await getAccessToken();
   const row = [[
     new Date().toISOString(),
+    clean(payload.variant, 120),
+    clean(payload.variantName, 120),
     clean(payload.favorite, 120),
     clean(payload.understanding, 4000),
     clean(payload.feeling, 1000),
-    clean(payload.variant, 120),
+    clean(payload.understanding_score, 20),
+    clean(payload.trust_score, 20),
+    clean(payload.try_intent_score, 20),
+    clean(payload.overwhelm_score, 20),
     clean(payload.pageUrl, 1000),
     clean(payload.referrer, 1000),
     clean(payload.userAgent, 1000),
@@ -107,8 +112,8 @@ export default async function handler(req, res) {
 
   try {
     const payload = await readJson(req);
-    if (!payload.favorite) {
-      return res.status(400).json({ ok: false, error: 'favorite is required' });
+    if (!payload.favorite && !payload.variantName) {
+      return res.status(400).json({ ok: false, error: 'favorite or variantName is required' });
     }
 
     const result = await appendToSheet(payload);

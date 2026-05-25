@@ -25,9 +25,9 @@
 
   <main id="top">
     <section class="hero">
-      <div class="badge">Eksperiment 01 · ADHD/Fokus App</div>
-      <h1>Hvilket navn får deg til å tenke: “den appen trenger jeg”?</h1>
-      <p class="lead">Vi tester navn på en voice-first fokusapp som lar deg snakke rotete, og får tilbake struktur, prioritet og neste minste steg.</p>
+      <div class="badge" data-variant-field="badge">Eksperiment 01 · ADHD/Fokus App</div>
+      <h1 data-variant-field="heroTitle">Hvilket navn får deg til å tenke: “den appen trenger jeg”?</h1>
+      <p class="lead" data-variant-field="lead">Vi tester navn på en voice-first fokusapp som lar deg snakke rotete, og får tilbake struktur, prioritet og neste minste steg.</p>
       <div class="hero-actions">
         <a class="button primary" href="#test">Ta navnetesten</a>
         <a class="button ghost" href="#metode">Se metoden</a>
@@ -77,15 +77,15 @@
     </section>
 
     <section id="kandidater" class="section">
-      <p class="eyebrow">Navnekandidater</p>
-      <h2>Første pulje vi tester</h2>
-      <div class="name-grid">
-        <button class="name-card" data-name="Klaro"><strong>Klaro</strong><span>Klarhet + ro. Moderne og internasjonalt.</span></button>
-        <button class="name-card" data-name="HodeRo"><strong>HodeRo</strong><span>Norsk, emosjonelt og veldig tydelig.</span></button>
-        <button class="name-card" data-name="Neste"><strong>Neste</strong><span>Alt reduseres til ett neste steg.</span></button>
-        <button class="name-card" data-name="TankeFlyt"><strong>TankeFlyt</strong><span>Mykt, beskrivende og brain-dump-nært.</span></button>
-        <button class="name-card" data-name="FokusFlyt"><strong>FokusFlyt</strong><span>Tydelig produktivitetsretning.</span></button>
-        <button class="name-card" data-name="Lumo"><strong>Lumo</strong><span>Lyst, rolig og mer merkevare enn funksjon.</span></button>
+      <p class="eyebrow">Navnevariant</p>
+      <h2>Du vurderer: <span data-variant-field="name">Navnetest</span></h2>
+      <p class="variant-summary" data-variant-field="description">En voice-first fokusapp som gjør tankekaos om til struktur, prioritering og neste minste steg.</p>
+      <div class="name-grid" aria-label="Andre testlenker">
+        <a class="name-card" href="?variant=hodero"><strong>HodeRo</strong><span>Norsk, emosjonelt og veldig tydelig.</span></a>
+        <a class="name-card" href="?variant=tankerydd"><strong>Tankerydd</strong><span>Konkret: rydder tanker til struktur.</span></a>
+        <a class="name-card" href="?variant=hodefred"><strong>Hodefred</strong><span>Rolig, emosjonelt og lav terskel.</span></a>
+        <a class="name-card" href="?variant=fokusflyt"><strong>FokusFlyt</strong><span>Tydelig produktivitetsretning.</span></a>
+        <a class="name-card" href="?variant=klaresinn"><strong>KlareSinn</strong><span>Tydeligere tanker og enklere start.</span></a>
       </div>
     </section>
 
@@ -94,26 +94,63 @@
       <h2>Ta en rask navnetest</h2>
       <p>Svarene brukes kun til å vurdere navnekandidatene og forbedre produktideen. Ikke skriv inn sensitive personopplysninger.</p>
       <form id="name-test-form">
+        <input type="hidden" name="favorite" data-variant-input="favorite" value="Navnetest" />
+        <div class="variant-pill">Navnet du vurderer: <strong data-variant-field="name">Navnetest</strong></div>
         <label>
-          Hvilket navn liker du best?
-          <select name="favorite" required>
-            <option value="">Velg navn</option>
-            <option>Klaro</option>
-            <option>HodeRo</option>
-            <option>Neste</option>
-            <option>TankeFlyt</option>
-            <option>FokusFlyt</option>
-            <option>Lumo</option>
-          </select>
-        </label>
-        <label>
-          Hva tror du appen gjør, basert på navnet?
+          Hva tror du appen gjør, basert på navnet og teksten over?
           <textarea name="understanding" rows="4" placeholder="Skriv førsteinntrykket ditt"></textarea>
         </label>
         <label>
           Hvilken følelse gir navnet?
           <input name="feeling" placeholder="f.eks. rolig, teknisk, trygt, uklart" />
         </label>
+        <fieldset class="score-grid">
+          <legend>Gi raske scorer fra 1 til 5</legend>
+          <label>
+            Hvor lett er navnet å forstå?
+            <select name="understanding_score" required>
+              <option value="">Velg score</option>
+              <option value="1">1 · Svakt</option>
+              <option value="2">2</option>
+              <option value="3">3 · Nøytralt</option>
+              <option value="4">4</option>
+              <option value="5">5 · Sterkt</option>
+            </select>
+          </label>
+          <label>
+            Hvor trygt/rolig føles navnet?
+            <select name="trust_score" required>
+              <option value="">Velg score</option>
+              <option value="1">1 · Svakt</option>
+              <option value="2">2</option>
+              <option value="3">3 · Nøytralt</option>
+              <option value="4">4</option>
+              <option value="5">5 · Sterkt</option>
+            </select>
+          </label>
+          <label>
+            Hvor sannsynlig er det at du ville prøvd appen?
+            <select name="try_intent_score" required>
+              <option value="">Velg score</option>
+              <option value="1">1 · Svakt</option>
+              <option value="2">2</option>
+              <option value="3">3 · Nøytralt</option>
+              <option value="4">4</option>
+              <option value="5">5 · Sterkt</option>
+            </select>
+          </label>
+          <label>
+            Hvor lite overveldende føles navnet?
+            <select name="overwhelm_score" required>
+              <option value="">Velg score</option>
+              <option value="1">1 · Svakt</option>
+              <option value="2">2</option>
+              <option value="3">3 · Nøytralt</option>
+              <option value="4">4</option>
+              <option value="5">5 · Sterkt</option>
+            </select>
+          </label>
+        </fieldset>
         <button class="button primary" type="submit">Send inn svar</button>
         <p id="form-status" role="status"></p>
       </form>
@@ -124,6 +161,6 @@
     <p>Et tidlig navne- og produkteksperiment fra Datasmie.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>

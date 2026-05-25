@@ -4,16 +4,15 @@ Datadrevet navnevalg for en voice-first fokusapp som gjør rotete tale om til st
 
 ## Hva dette er
 
-Dette repoet inneholder første statiske landingsside/testside for navnevalidering. Målet er å teste navn som:
+Dette repoet inneholder en statisk landingsside/testside for navnevalidering. Målet er å teste navn som:
 
-- Klaro
 - HodeRo
-- Neste
-- TankeFlyt
+- Tankerydd
+- Hodefred
 - FokusFlyt
-- Lumo
+- KlareSinn
 
-Siden lagrer navnetest-svar i Google Sheets via et Vercel API-endepunkt, med lokal `localStorage`-backup i nettleseren hvis innsendingen feiler.
+Siden støtter variant-URL-er som viser ett navn av gangen, og lagrer navnetest-svar i Google Sheets via et Vercel API-endepunkt, med lokal `localStorage`-backup i nettleseren hvis innsendingen feiler.
 
 ## Live-lenker
 
@@ -21,6 +20,14 @@ Siden lagrer navnetest-svar i Google Sheets via et Vercel API-endepunkt, med lok
 - Vercel fallback: https://adhd-focus-name-test.vercel.app/
 - GitHub Pages fallback: https://glennf.github.io/adhd-focus-name-test/
 - Google Sheet for responser: https://docs.google.com/spreadsheets/d/1yX8FdD74uH8sKBObjVsaQ9zL856JM8rs2LE89ycD_dY/edit
+
+## Variant-URL-er
+
+- HodeRo: https://navnetest.datasmie.no/?variant=hodero
+- Tankerydd: https://navnetest.datasmie.no/?variant=tankerydd
+- Hodefred: https://navnetest.datasmie.no/?variant=hodefred
+- FokusFlyt: https://navnetest.datasmie.no/?variant=fokusflyt
+- KlareSinn: https://navnetest.datasmie.no/?variant=klaresinn
 
 ## Testkriterier
 
@@ -42,6 +49,14 @@ python3 -m http.server 4173
 ```
 
 Deretter: http://localhost:4173
+
+## Testing
+
+```bash
+npm test
+```
+
+Testene dekker variantkonfigurasjon og payload-formatet som sendes til Google Sheets.
 
 ## Vercel
 
@@ -65,8 +80,8 @@ Se også: [`docs/vercel-deploy.md`](docs/vercel-deploy.md)
 ## Neste steg
 
 - Legge inn analytics/event tracking.
-- Lage variant-URL-er per navn (`?variant=klaro`, `?variant=hodero`, osv.).
 - Rydde test-/verifiseringsrader fra Google Sheet før ekstern deling hvis du vil ha helt rent datasett.
+- Sende første runde til 10–20 personer med fordelt variantlenke.
 - Kjøre recall-test etter 10 min / 24 timer.
 - Lage annonse-/landingssidevarianter for topp 2–3 navn.
 
