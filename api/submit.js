@@ -1,5 +1,5 @@
 const SHEET_ID = process.env.GOOGLE_SHEET_ID;
-const SHEET_RANGE = process.env.GOOGLE_SHEET_RANGE || 'Responses!A:R';
+const SHEET_RANGE = process.env.GOOGLE_SHEET_RANGE || 'Responses_v2!A:S';
 const TOKEN_URI = process.env.GOOGLE_TOKEN_URI || 'https://oauth2.googleapis.com/token';
 
 const allowedOrigins = new Set([

@@ -14,7 +14,7 @@
 
 - Vercel CLI is installed locally.
 - `VERCEL_TOKEN` is present in `~/.hermes/.env` and was verified with `vercel whoami --token`.
-- Google Sheets response storage is configured with Vercel Production environment variables. Do not print or commit OAuth secrets. Current append range: `Responses!A:S`.
+- Google Sheets response storage is configured with Vercel Production environment variables. Do not print or commit OAuth secrets. Current append range: `Responses_v2!A:S`.
 - Project is linked to Vercel under `datasmie/adhd-focus-name-test`.
 - `.vercel/` is ignored via `.gitignore` and should not be committed.
 
