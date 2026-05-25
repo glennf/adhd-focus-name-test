@@ -3,19 +3,21 @@
 ## Current project
 
 - GitHub repo: https://github.com/glennf/adhd-focus-name-test
-- Current GitHub Pages URL: https://glennf.github.io/adhd-focus-name-test/
+- Vercel production URL: https://adhd-focus-name-test.vercel.app/
+- GitHub Pages fallback URL: https://glennf.github.io/adhd-focus-name-test/
 - Intended Vercel project type: static site, no build step
 - Local path: `/Users/glenn/Projects/adhd-focus-name-test`
 
 ## What I found locally
 
-- Vercel CLI is installed: `vercel 50.40.0`
-- CLI is not logged in interactively: `vercel whoami` reports no credentials
-- There appears to be a `VERCEL_TOKEN` entry in `~/.hermes/.env`, but the `.env` file cannot be safely sourced as shell because at least one value contains spaces/unquoted content. Do not print token values.
+- Vercel CLI is installed locally.
+- `VERCEL_TOKEN` is present in `~/.hermes/.env` and was verified with `vercel whoami --token`.
+- Project is linked to Vercel under `datasmie/adhd-focus-name-test`.
+- `.vercel/` is ignored via `.gitignore` and should not be committed.
 
 ## Recommended deployment route
 
-Use Vercel's GitHub integration instead of manual CLI deploys for this project.
+Use Vercel's GitHub integration for ongoing deploys after the initial CLI link/deploy.
 
 Why:
 
@@ -59,8 +61,8 @@ vercel deploy --prod --token "$VERCEL_TOKEN"
 
 ## After deploy
 
-- Add the production URL to the Notion project page.
-- Replace or de-emphasize the GitHub Pages URL if Vercel becomes canonical.
+- Keep https://adhd-focus-name-test.vercel.app/ as the canonical test URL.
+- Keep the GitHub Pages URL only as fallback/history.
 - Add analytics/events before inviting many respondents.
 
 ## Next data steps
