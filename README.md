@@ -36,8 +36,23 @@ python3 -m http.server 4173
 
 Deretter: http://localhost:4173
 
+## Vercel
+
+Dette prosjektet er klargjort for Vercel som statisk side.
+
+Anbefalt importoppsett:
+
+- Framework Preset: `Other`
+- Build Command: tomt
+- Output Directory: `.`
+- Install Command: tomt
+- Root Directory: `.`
+
+Se også: [`docs/vercel-deploy.md`](docs/vercel-deploy.md)
+
 ## Neste steg
 
+- Importere GitHub-repoet i Vercel.
 - Legge inn analytics/event tracking.
 - Lage variant-URL-er per navn (`?variant=klaro`, `?variant=hodero`, osv.).
 - Koble skjema til database eller Google Sheet.
