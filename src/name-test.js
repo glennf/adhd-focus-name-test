@@ -25,7 +25,7 @@ export const variantConfigs = [
     heroTitle: 'HodeRo gjør rotete tanker om til neste steg.',
     lead: 'Snakk fritt når hodet er fullt. HodeRo rydder innholdet til oppgaver, prioritet og ett lite steg du kan starte med.',
     tagline: 'Snakk rotet. Få ro i hodet.',
-    description: 'Norsk, emosjonelt og tydelig: en app for mer ro og mindre tankekaos.',
+    description: 'Et rolig navn for en app som gjør tankekaos lettere å se og starte på.',
   },
   {
     id: 'tankerydd',
@@ -34,7 +34,7 @@ export const variantConfigs = [
     heroTitle: 'Tankerydd rydder tankekaoset ditt til en enkel plan.',
     lead: 'Les inn alt som surrer. Tankerydd sorterer det til oppgaver, bekymringer, ideer og neste minste handling.',
     tagline: 'Fra tankekaos til neste steg.',
-    description: 'Veldig forståelig og konkret: appen rydder tanker til struktur.',
+    description: 'Et konkret navn for en app som sorterer rotete tanker til oppgaver og neste steg.',
   },
   {
     id: 'hodefred',
@@ -43,7 +43,7 @@ export const variantConfigs = [
     heroTitle: 'Hodefred hjelper deg å få tankene ut av hodet.',
     lead: 'Når alt kjennes overveldende, kan du snakke det inn og få tilbake en roligere oversikt med prioritet og neste steg.',
     tagline: 'Få fred i hodet — ett steg av gangen.',
-    description: 'Emosjonelt og rolig: mindre stress, mer oversikt.',
+    description: 'Et lavterskel navn for en app som gir roligere oversikt når hodet er fullt.',
   },
   {
     id: 'fokusflyt',
@@ -52,7 +52,7 @@ export const variantConfigs = [
     heroTitle: 'FokusFlyt gjør brain dumps om til fokusert fremdrift.',
     lead: 'Snakk inn rotete tanker, få dem strukturert og finn det mest realistiske neste steget akkurat nå.',
     tagline: 'Fra rot til fokusflyt.',
-    description: 'Produktivitetsrettet navn med tydelig fokus- og flyt-assosiasjon.',
+    description: 'Et produktivt navn for en app som gjør brain dumps om til strukturert fremdrift.',
   },
   {
     id: 'klaresinn',
@@ -61,7 +61,7 @@ export const variantConfigs = [
     heroTitle: 'KlareSinn gjør tanker tydeligere når alt kjennes fullt.',
     lead: 'Bruk stemmen som innboks. KlareSinn organiserer det du sier til oversikt, prioritet og neste minste steg.',
     tagline: 'Tydeligere tanker. Enklere start.',
-    description: 'Rolig og litt mer premium/mental-klarhet enn klassisk oppgaveapp.',
+    description: 'Et klarhetsorientert navn for en app som organiserer det du sier til prioritet og neste steg.',
   },
 ];
 
