@@ -13,7 +13,14 @@ Dette repoet inneholder første statiske landingsside/testside for navnevalideri
 - FokusFlyt
 - Lumo
 
-Siden måler foreløpig lokalt i nettleseren, men strukturen er laget slik at vi senere kan koble på analytics, skjema-backend eller A/B-testing.
+Siden lagrer navnetest-svar i Google Sheets via et Vercel API-endepunkt, med lokal `localStorage`-backup i nettleseren hvis innsendingen feiler.
+
+## Live-lenker
+
+- Canonical testside: https://navnetest.datasmie.no/
+- Vercel fallback: https://adhd-focus-name-test.vercel.app/
+- GitHub Pages fallback: https://glennf.github.io/adhd-focus-name-test/
+- Google Sheet for responser: https://docs.google.com/spreadsheets/d/1yX8FdD74uH8sKBObjVsaQ9zL856JM8rs2LE89ycD_dY/edit
 
 ## Testkriterier
 
@@ -40,8 +47,10 @@ Deretter: http://localhost:4173
 
 Dette prosjektet er deployet på Vercel som statisk side.
 
-- Production URL: https://adhd-focus-name-test.vercel.app/
+- Production URL: https://navnetest.datasmie.no/
+- Vercel fallback URL: https://adhd-focus-name-test.vercel.app/
 - GitHub Pages fallback: https://glennf.github.io/adhd-focus-name-test/
+- Google Sheet responses: https://docs.google.com/spreadsheets/d/1yX8FdD74uH8sKBObjVsaQ9zL856JM8rs2LE89ycD_dY/edit
 
 Prosjektoppsett:
 
@@ -57,7 +66,7 @@ Se også: [`docs/vercel-deploy.md`](docs/vercel-deploy.md)
 
 - Legge inn analytics/event tracking.
 - Lage variant-URL-er per navn (`?variant=klaro`, `?variant=hodero`, osv.).
-- Koble skjema til database eller Google Sheet.
+- Rydde test-/verifiseringsrader fra Google Sheet før ekstern deling hvis du vil ha helt rent datasett.
 - Kjøre recall-test etter 10 min / 24 timer.
 - Lage annonse-/landingssidevarianter for topp 2–3 navn.
 

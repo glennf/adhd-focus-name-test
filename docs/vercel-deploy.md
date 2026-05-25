@@ -3,8 +3,10 @@
 ## Current project
 
 - GitHub repo: https://github.com/glennf/adhd-focus-name-test
-- Vercel production URL: https://adhd-focus-name-test.vercel.app/
+- Vercel production URL: https://navnetest.datasmie.no/
+- Vercel fallback URL: https://adhd-focus-name-test.vercel.app/
 - GitHub Pages fallback URL: https://glennf.github.io/adhd-focus-name-test/
+- Google Sheet responses: https://docs.google.com/spreadsheets/d/1yX8FdD74uH8sKBObjVsaQ9zL856JM8rs2LE89ycD_dY/edit
 - Intended Vercel project type: static site, no build step
 - Local path: `/Users/glenn/Projects/adhd-focus-name-test`
 
@@ -12,6 +14,7 @@
 
 - Vercel CLI is installed locally.
 - `VERCEL_TOKEN` is present in `~/.hermes/.env` and was verified with `vercel whoami --token`.
+- Google Sheets response storage is configured with Vercel Production environment variables. Do not print or commit OAuth secrets.
 - Project is linked to Vercel under `datasmie/adhd-focus-name-test`.
 - `.vercel/` is ignored via `.gitignore` and should not be committed.
 
@@ -61,8 +64,10 @@ vercel deploy --prod --token "$VERCEL_TOKEN"
 
 ## After deploy
 
-- Keep https://adhd-focus-name-test.vercel.app/ as the canonical test URL.
+- Keep https://navnetest.datasmie.no/ as the canonical test URL.
+- Keep https://adhd-focus-name-test.vercel.app/ as Vercel fallback.
 - Keep the GitHub Pages URL only as fallback/history.
+- Verify form submissions write to the Google Sheet before inviting respondents.
 - Add analytics/events before inviting many respondents.
 
 ## Next data steps
@@ -72,10 +77,13 @@ vercel deploy --prod --token "$VERCEL_TOKEN"
    - `/?variant=klaro`
    - `/?variant=hodero`
    - `/?variant=neste`
-2. Add event tracking:
+2. Response storage:
+   - Google Sheet: https://docs.google.com/spreadsheets/d/1yX8FdD74uH8sKBObjVsaQ9zL856JM8rs2LE89ycD_dY/edit
+   - Vercel API route: `/api/submit`
+   - Browser fallback: `localStorage` key `name-test-responses`
+3. Add event tracking:
    - CTA clicked
    - candidate card clicked
    - form submitted
    - selected favorite
-3. Connect responses to Google Sheets, Supabase, Airtable, or Vercel Postgres.
 4. Add a recall-test flow after 10 minutes or 24 hours.
