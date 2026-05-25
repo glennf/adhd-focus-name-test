@@ -2,8 +2,10 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   buildResponsePayload,
+  getRandomVariantId,
   getVariantConfig,
   scoreLabels,
+  testVariantIds,
   variantConfigs,
 } from '../src/name-test.js';
 
@@ -34,6 +36,12 @@ test('variantConfigs contains the planned name candidates', () => {
     'FokusFlyt',
     'KlareSinn',
   ]);
+});
+
+test('public test variants exclude default and can be deterministically randomized', () => {
+  assert.deepEqual(testVariantIds, ['hodero', 'tankerydd', 'hodefred', 'fokusflyt', 'klaresinn']);
+  assert.equal(getRandomVariantId(() => 0), 'hodero');
+  assert.equal(getRandomVariantId(() => 0.999), 'klaresinn');
 });
 
 test('scoreLabels provides a five-point Likert scale', () => {

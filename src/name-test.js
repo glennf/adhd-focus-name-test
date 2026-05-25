@@ -6,6 +6,8 @@ export const scoreLabels = [
   { value: '5', label: '5 · Sterkt' },
 ];
 
+export const testVariantIds = ['hodero', 'tankerydd', 'hodefred', 'fokusflyt', 'klaresinn'];
+
 export const variantConfigs = [
   {
     id: 'default',
@@ -65,6 +67,11 @@ export const variantConfigs = [
 
 const configById = new Map(variantConfigs.map((config) => [config.id, config]));
 const nameToId = new Map(variantConfigs.map((config) => [config.name.toLowerCase(), config.id]));
+
+export function getRandomVariantId(random = Math.random) {
+  const index = Math.floor(random() * testVariantIds.length);
+  return testVariantIds[Math.max(0, Math.min(index, testVariantIds.length - 1))];
+}
 
 export function normalizeVariant(rawVariant) {
   return String(rawVariant || '')

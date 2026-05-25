@@ -1,9 +1,16 @@
-import { buildResponsePayload, getVariantConfig } from './src/name-test.js';
+import { buildResponsePayload, getRandomVariantId, getVariantConfig } from './src/name-test.js';
 
 const form = document.querySelector('#name-test-form');
 const status = document.querySelector('#form-status');
 const submitButton = form?.querySelector('button[type="submit"]');
 const params = new URLSearchParams(window.location.search);
+
+if (!params.get('variant')) {
+  params.set('variant', getRandomVariantId());
+  const randomizedUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+  window.location.replace(randomizedUrl);
+}
+
 const variantConfig = getVariantConfig(params.get('variant'));
 
 function applyVariant(config) {
@@ -18,6 +25,7 @@ function applyVariant(config) {
   document.querySelectorAll('.name-card').forEach((card) => {
     const url = new URL(card.href, window.location.href);
     const cardVariant = getVariantConfig(url.searchParams.get('variant'));
+    card.hidden = true;
     if (cardVariant.id === config.id) card.setAttribute('aria-current', 'true');
   });
 }

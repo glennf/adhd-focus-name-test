@@ -23,6 +23,11 @@ Siden støtter variant-URL-er som viser ett navn av gangen, og lagrer navnetest-
 
 ## Variant-URL-er
 
+Offentlig deling bør bruke randomiseringslenken:
+
+- Randomisert test: https://navnetest.datasmie.no/
+
+Hvis du vil fordele manuelt i en liten runde, kan du fortsatt bruke direkte variantlenker:
 - HodeRo: https://navnetest.datasmie.no/?variant=hodero
 - Tankerydd: https://navnetest.datasmie.no/?variant=tankerydd
 - Hodefred: https://navnetest.datasmie.no/?variant=hodefred
@@ -81,7 +86,7 @@ Se også: [`docs/vercel-deploy.md`](docs/vercel-deploy.md)
 
 - Legge inn analytics/event tracking.
 - Rydde test-/verifiseringsrader fra Google Sheet før ekstern deling hvis du vil ha helt rent datasett.
-- Sende første runde til 10–20 personer med fordelt variantlenke.
+- Sende første runde til 10–20 personer med randomisert hovedlenke eller manuelt fordelte variantlenker.
 - Kjøre recall-test etter 10 min / 24 timer.
 - Lage annonse-/landingssidevarianter for topp 2–3 navn.
 

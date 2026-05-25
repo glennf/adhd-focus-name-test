@@ -64,7 +64,7 @@ vercel deploy --prod --token "$VERCEL_TOKEN"
 
 ## After deploy
 
-- Keep https://navnetest.datasmie.no/ as the canonical test URL.
+- Keep https://navnetest.datasmie.no/ as the canonical randomized public test URL.
 - Keep https://adhd-focus-name-test.vercel.app/ as Vercel fallback.
 - Keep the GitHub Pages URL only as fallback/history.
 - Verify form submissions write to the Google Sheet before inviting respondents.
@@ -72,12 +72,15 @@ vercel deploy --prod --token "$VERCEL_TOKEN"
 
 ## Next data steps
 
-1. Variant URLs are live for names:
-   - `/?variant=hodero`
-   - `/?variant=tankerydd`
-   - `/?variant=hodefred`
-   - `/?variant=fokusflyt`
-   - `/?variant=klaresinn`
+1. Public randomized URL is live:
+   - `/` redirects to one random `?variant=...` URL.
+   - Direct variant URLs still work for controlled manual distribution:
+     - `/?variant=hodero`
+     - `/?variant=tankerydd`
+     - `/?variant=hodefred`
+     - `/?variant=fokusflyt`
+     - `/?variant=klaresinn`
+   - The public page does not show a variant chooser; respondents should not select names themselves.
 2. Response storage:
    - Google Sheet: https://docs.google.com/spreadsheets/d/1yX8FdD74uH8sKBObjVsaQ9zL856JM8rs2LE89ycD_dY/edit
    - Vercel API route: `/api/submit`
