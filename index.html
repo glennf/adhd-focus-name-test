@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navnetest — Voice-first fokusapp</title>
+  <meta name="description" content="Hjelp oss velge navn på en voice-first fokusapp som gjør rotete tanker om til struktur og neste steg." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Til toppen">
+      <span class="brand-mark">🧠</span>
+      <span>Navnetest</span>
+    </a>
+    <nav>
+      <a href="#metode">Metode</a>
+      <a href="#kandidater">Kandidater</a>
+      <a href="#test">Test</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="badge">Eksperiment 01 · ADHD/Fokus App</div>
+      <h1>Hvilket navn får deg til å tenke: “den appen trenger jeg”?</h1>
+      <p class="lead">Vi tester navn på en voice-first fokusapp som lar deg snakke rotete, og får tilbake struktur, prioritet og neste minste steg.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#test">Ta navnetesten</a>
+        <a class="button ghost" href="#metode">Se metoden</a>
+      </div>
+      <div class="hero-card" aria-label="Eksempel på app-output">
+        <div class="card-top">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="window-title">Brain dump → struktur</span>
+        </div>
+        <div class="transcript">
+          <p><strong>Input:</strong> “Jeg må ringe tannlegen, sende faktura, rydde kjøkkenet og skrive ferdig planen, men vet ikke hvor jeg skal starte.”</p>
+          <ul>
+            <li><span>Påminnelse</span> Ring tannlegen</li>
+            <li><span>Oppgave</span> Send faktura til kunde</li>
+            <li><span>Neste steg</span> Åpne fakturaverktøyet og finn kunden</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="metode" class="section split">
+      <div>
+        <p class="eyebrow">Vitenskapelig tilnærming</p>
+        <h2>Vi velger ikke navn på magefølelse alene.</h2>
+      </div>
+      <div class="copy">
+        <p>Navnet blir vurdert på forståelse, emosjonell trygghet, minneverdighet, stavbarhet, distinkthet og søkbarhet. Først måler vi førsteinntrykk. Deretter kjører vi recall-test og enkel landingsside/A-B-test på toppkandidatene.</p>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <article>
+        <span>01</span>
+        <h3>Forståelse</h3>
+        <p>Hva tror folk appen gjør når de bare ser navnet?</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Følelse</h3>
+        <p>Gir navnet ro, tillit og lav terskel — eller stress og skam?</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Recall</h3>
+        <p>Hvilket navn husker folk etter 10 minutter eller dagen etter?</p>
+      </article>
+    </section>
+
+    <section id="kandidater" class="section">
+      <p class="eyebrow">Navnekandidater</p>
+      <h2>Første pulje vi tester</h2>
+      <div class="name-grid">
+        <button class="name-card" data-name="Klaro"><strong>Klaro</strong><span>Klarhet + ro. Moderne og internasjonalt.</span></button>
+        <button class="name-card" data-name="HodeRo"><strong>HodeRo</strong><span>Norsk, emosjonelt og veldig tydelig.</span></button>
+        <button class="name-card" data-name="Neste"><strong>Neste</strong><span>Alt reduseres til ett neste steg.</span></button>
+        <button class="name-card" data-name="TankeFlyt"><strong>TankeFlyt</strong><span>Mykt, beskrivende og brain-dump-nært.</span></button>
+        <button class="name-card" data-name="FokusFlyt"><strong>FokusFlyt</strong><span>Tydelig produktivitetsretning.</span></button>
+        <button class="name-card" data-name="Lumo"><strong>Lumo</strong><span>Lyst, rolig og mer merkevare enn funksjon.</span></button>
+      </div>
+    </section>
+
+    <section id="test" class="section test-panel">
+      <p class="eyebrow">Prototype for datainnsamling</p>
+      <h2>Ta en rask navnetest</h2>
+      <p>Dette er første statiske versjon. Senere kobler vi skjemaet til en database/analytics, men allerede nå definerer siden hvilke spørsmål vi skal måle.</p>
+      <form id="name-test-form">
+        <label>
+          Hvilket navn liker du best?
+          <select name="favorite" required>
+            <option value="">Velg navn</option>
+            <option>Klaro</option>
+            <option>HodeRo</option>
+            <option>Neste</option>
+            <option>TankeFlyt</option>
+            <option>FokusFlyt</option>
+            <option>Lumo</option>
+          </select>
+        </label>
+        <label>
+          Hva tror du appen gjør, basert på navnet?
+          <textarea name="understanding" rows="4" placeholder="Skriv førsteinntrykket ditt"></textarea>
+        </label>
+        <label>
+          Hvilken følelse gir navnet?
+          <input name="feeling" placeholder="f.eks. rolig, teknisk, trygt, uklart" />
+        </label>
+        <button class="button primary" type="submit">Lagre lokalt som testrespons</button>
+        <p id="form-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Eksperiment for ADHD/Fokus App · <a href="https://www.notion.so/ADHD-Fokus-App-Voice-first-brain-dump-organisering-36b3fac2d68a81eabf31ebfd379da922">Notion-side</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
